@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServerAddress {
 
-    @Value("${serverHost:localhost}")
+    @Value("${server.host}")
     private String host;
 
-    @Value("${serverPort:8096}")
+    @Value("${server.port}")
     private int port;
 
     public String getServerUrl() {

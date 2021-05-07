@@ -21,6 +21,9 @@ public class DImages {
 		registry.put(IMG_Modify72, ImageDescriptor.createFromURL(getClass().getResource("/icons/modify72.png")));
 		registry.put(IMG_GreenCircle, ImageDescriptor.createFromURL(getClass().getResource("/icons/greenCircle.png")));
 		registry.put(IMG_RedCircle, ImageDescriptor.createFromURL(getClass().getResource("/icons/redCircle.png")));
+		registry.put(IMG_Address, ImageDescriptor.createFromURL(getClass().getResource("/icons/address24.png")));
+		registry.put(IMG_Address72, ImageDescriptor.createFromURL(getClass().getResource("/icons/address72.png")));
+		registry.put(IMG_Help, ImageDescriptor.createFromURL(getClass().getResource("/icons/help.png")));
 	}
 
 	private static final String IMG_BO_Online = "img_BO_online";
@@ -117,6 +120,30 @@ public class DImages {
 	}
 	public ImageDescriptor des_RedCircle() {
 		return registry.getDescriptor(IMG_RedCircle);
+	}
+
+	private static final String IMG_Address = "img_Address";
+	public Image img_Address() {
+		return registry.get(IMG_Address);
+	}
+	public ImageDescriptor des_Address() {
+		return registry.getDescriptor(IMG_Address);
+	}
+
+	private static final String IMG_Address72 = "img_Address72";
+	public Image img_Address72() {
+		return registry.get(IMG_Address72);
+	}
+	public ImageDescriptor des_Address72() {
+		return registry.getDescriptor(IMG_Address72);
+	}
+
+	private static final String IMG_Help = "img_Help";
+	public Image img_Help() {
+		return registry.get(IMG_Help);
+	}
+	public ImageDescriptor des_Help() {
+		return registry.getDescriptor(IMG_Help);
 	}
 
 	private static DImages instance;

@@ -26,7 +26,7 @@ public class Launcher {
         GC gc = new GC(image);
         gc.setBackground(display.getSystemColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
         gc.fillRectangle(image.getBounds());
-        gc.drawText("MPK UI", 10, 10);
+        gc.drawText("MPK Client", 10, 10);
         gc.drawImage(DImages.instance().img_BO128(), (300-128)/2, (300-128)/2);
         gc.dispose();
         final Shell splash = new Shell(SWT.ON_TOP);

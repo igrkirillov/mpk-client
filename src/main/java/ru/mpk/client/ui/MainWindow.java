@@ -40,7 +40,7 @@ public class MainWindow extends ApplicationWindow {
     private TrayItem trayItem;
     private Menu trayMenu;
     private MenuItem miShow;
-    private ParametersTable parametersTable;
+    private TabsComposite tabs;
 
     @Autowired
     private ThreadPoolTaskScheduler scheduler;
@@ -68,11 +68,11 @@ public class MainWindow extends ApplicationWindow {
                 .grab(true, true)
                 .applyTo(root);
 
-        parametersTable = createParametersTable(root);
+        tabs = createTabs(root);
         GridDataFactory.swtDefaults()
                 .align(SWT.FILL, SWT.FILL)
                 .grab(true, true)
-                .applyTo(parametersTable);
+                .applyTo(tabs);
 
         createMenuBar();
         createTrayItem();
@@ -106,7 +106,7 @@ public class MainWindow extends ApplicationWindow {
     private void createTrayItem() {
         trayItem = new TrayItem(getShell().getDisplay().getSystemTray(), SWT.NONE);
         trayItem.setImage(DImages.instance().img_BO_Online());
-        trayItem.setToolTipText("BO Control");
+        trayItem.setToolTipText("MPK Client");
         trayItem.addListener(SWT.DefaultSelection, event -> show());
         trayItem.addListener(SWT.MenuDetect, event -> trayMenu.setVisible(true));
         trayItem.addListener(SWT.Selection, event -> trayMenu.setVisible(true));
@@ -136,8 +136,8 @@ public class MainWindow extends ApplicationWindow {
     @Override
     public void create() {
         super.create();
-        getShell().setText("BO Control " + serverAddress.getHost() + ":" + serverAddress.getPort());
-        parametersTable.setFocus();
+        getShell().setText("MPK Client " + serverAddress.getHost() + ":" + serverAddress.getPort());
+        tabs.setFocus();
 
         Runnable healthyUpdater = () -> {
             boolean newValue = isBoAvailable();
@@ -172,7 +172,7 @@ public class MainWindow extends ApplicationWindow {
     }
 
     @Lookup
-    public ParametersTable createParametersTable(Composite parent) {
+    public TabsComposite createTabs(Composite parent) {
         return null;
     }
 
@@ -183,7 +183,7 @@ public class MainWindow extends ApplicationWindow {
                 return;
             }
             if (boIsHealthy) {
-                String text = "BO Online";
+                String text = "MPK Client Online";
                 statusLineManager.setMessage(DImages.instance().img_GreenCircle(), text);
                 Image image = DImages.instance().img_BO_Online();
                 trayItem.setImage(image);
@@ -201,7 +201,7 @@ public class MainWindow extends ApplicationWindow {
 
     private boolean isBoAvailable() {
         try {
-            final URL url = new URL(serverAddress.getServerUrl());
+            final URL url = new URL(serverAddress.getServerUrl() + "/greeting");
             final URLConnection conn = url.openConnection();
             conn.setConnectTimeout(2000);
             conn.setReadTimeout(2000);
