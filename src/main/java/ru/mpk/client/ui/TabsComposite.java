@@ -65,9 +65,15 @@ public class TabsComposite extends Composite {
         CTabItem ti = new CTabItem(tf, SWT.NULL);
         ti.setText(HELP_TITLE);
         ti.setImage(DImages.instance().img_Help());
-        Text text = new Text(tf, SWT.READ_ONLY | SWT.MULTI);
-        text.setText("Чтобы открыть вкладку нажмите на одну из кнопок в верхней панели");
-        ti.setControl(text);
+        Composite panel = new Composite(tf, SWT.NULL);
+        GridLayoutFactory.swtDefaults().numColumns(1).applyTo(panel);
+        Text text = new Text(panel, SWT.READ_ONLY | SWT.SINGLE);
+        text.setBackground(tf.getBackground());
+        text.setText("Чтобы открыть новую вкладку, нажмите на одну из кнопок в верхней панели");
+        GridDataFactory.swtDefaults()
+                .grab(true, true)
+                .align(SWT.CENTER, SWT.CENTER).applyTo(text);
+        ti.setControl(panel);
         tf.setSelection(ti);
     }
 
@@ -75,9 +81,12 @@ public class TabsComposite extends Composite {
         CTabItem ti = new CTabItem(tf, SWT.CLOSE);
         ti.setText(ADDRESS_TITLE);
         ti.setImage(DImages.instance().img_Address());
-        Text text = new Text(tf, SWT.BORDER | SWT.MULTI);
+        Composite panel = new Composite(tf, SWT.NULL);
+        GridLayoutFactory.swtDefaults().numColumns(1).applyTo(panel);
+        Text text = new Text(panel, SWT.BORDER | SWT.MULTI);
         text.setText("This is page " + ADDRESS_TITLE);
-        ti.setControl(text);
+        GridDataFactory.fillDefaults().grab(true, true).applyTo(text);
+        ti.setControl(panel);
         tf.setSelection(ti);
     }
 }
