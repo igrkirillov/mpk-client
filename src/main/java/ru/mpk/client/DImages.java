@@ -24,6 +24,9 @@ public class DImages {
 		registry.put(IMG_Address, ImageDescriptor.createFromURL(getClass().getResource("/icons/address24.png")));
 		registry.put(IMG_Address72, ImageDescriptor.createFromURL(getClass().getResource("/icons/address72.png")));
 		registry.put(IMG_Help, ImageDescriptor.createFromURL(getClass().getResource("/icons/help.png")));
+		registry.put(IMG_Fias, ImageDescriptor.createFromURL(getClass().getResource("/icons/fias.png")));
+		registry.put(IMG_Ds, ImageDescriptor.createFromURL(getClass().getResource("/icons/ds.png")));
+		registry.put(IMG_Back, ImageDescriptor.createFromURL(getClass().getResource("/icons/bk.png")));
 	}
 
 	private static final String IMG_BO_Online = "img_BO_online";
@@ -144,6 +147,30 @@ public class DImages {
 	}
 	public ImageDescriptor des_Help() {
 		return registry.getDescriptor(IMG_Help);
+	}
+
+	private static final String IMG_Fias = "img_Fias";
+	public Image img_Fias() {
+		return registry.get(IMG_Fias);
+	}
+	public ImageDescriptor des_Fias() {
+		return registry.getDescriptor(IMG_Fias);
+	}
+
+	private static final String IMG_Ds = "img_Db";
+	public Image img_Db() {
+		return registry.get(IMG_Ds);
+	}
+	public ImageDescriptor des_Db() {
+		return registry.getDescriptor(IMG_Ds);
+	}
+
+	private static final String IMG_Back = "img_Back";
+	public Image img_Back() {
+		return registry.get(IMG_Back);
+	}
+	public ImageDescriptor des_Back() {
+		return registry.getDescriptor(IMG_Back);
 	}
 
 	private static DImages instance;

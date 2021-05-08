@@ -12,6 +12,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -24,6 +27,9 @@ public class TabsComposite extends Composite {
 
     private final CTabFolder tf;
     private final ToolBar toolBar;
+
+    @Autowired
+    private BeanFactory beanFactory;
 
     private static final String HELP_TITLE = "Помощь";
     private static final String ADDRESS_TITLE = "Адреса";
@@ -83,10 +89,10 @@ public class TabsComposite extends Composite {
         ti.setImage(DImages.instance().img_Address());
         Composite panel = new Composite(tf, SWT.NULL);
         GridLayoutFactory.swtDefaults().numColumns(1).applyTo(panel);
-        Text text = new Text(panel, SWT.BORDER | SWT.MULTI);
-        text.setText("This is page " + ADDRESS_TITLE);
-        GridDataFactory.fillDefaults().grab(true, true).applyTo(text);
+        AddressesPanel addressesPanel = beanFactory.getBean(AddressesPanel.class, panel, beanFactory);
+        GridDataFactory.fillDefaults().grab(true, true).applyTo(addressesPanel);
         ti.setControl(panel);
         tf.setSelection(ti);
+//        addressesPanel.setFocusToText();
     }
 }

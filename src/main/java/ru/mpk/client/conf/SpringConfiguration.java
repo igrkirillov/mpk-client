@@ -6,6 +6,7 @@
 package ru.mpk.client.conf;
 
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -15,5 +16,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootConfiguration
 @ComponentScan(basePackages = "ru.mpk.client")
 @EnableScheduling
+@EnableFeignClients(basePackages = "ru.mpk.client.service")
 public class SpringConfiguration {
 }
