@@ -120,10 +120,8 @@ public class AddressLookupPanel extends Composite {
             try {
                 dataList = fiasAddressClient.getList(query);
                 dataList.forEach(dto -> {
-                    TableItem item = new TableItem(table, SWT.NONE);
-                    item.setImage(0, dto.getMpkUid() != null ? DImages.instance().img_Db() : DImages.instance().img_Fias());
-                    item.setText(1, dto.getFullName());
-                    item.setData(dto);
+                    TableItem ti = new TableItem(table, SWT.NONE);
+                    decorateTableItem(ti, dto);
                 });
             } finally {
                 lp.setText(String.format("Найдено %d адресов", dataList != null ? dataList.size() : 0));
@@ -131,7 +129,25 @@ public class AddressLookupPanel extends Composite {
         });
     }
 
+    private void decorateTableItem(TableItem ti, FiasAddressDto dto) {
+        ti.setImage(0, dto.getMpkUid() != null ? DImages.instance().img_Db() : DImages.instance().img_Fias());
+        ti.setText(1, dto.getFullName());
+        ti.setData(dto);
+    }
+
     public void setFocusToText() {
         text.setFocus();
+    }
+
+    public void refresh(FiasAddressDto dto) {
+        for (TableItem ti : table.getItems()) {
+            FiasAddressDto data = (FiasAddressDto) ti.getData();
+            if (data.getFiasUid().equals(dto.getFiasUid())) {
+                ti.setData(dto);
+                decorateTableItem(ti, dto);
+                break;
+            }
+        }
+        table.redraw();
     }
 }

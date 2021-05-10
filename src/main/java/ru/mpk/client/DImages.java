@@ -27,6 +27,11 @@ public class DImages {
 		registry.put(IMG_Fias, ImageDescriptor.createFromURL(getClass().getResource("/icons/fias.png")));
 		registry.put(IMG_Ds, ImageDescriptor.createFromURL(getClass().getResource("/icons/ds.png")));
 		registry.put(IMG_Back, ImageDescriptor.createFromURL(getClass().getResource("/icons/bk.png")));
+		registry.put(IMG_Abonents, ImageDescriptor.createFromURL(getClass().getResource("/icons/clients.png")));
+		registry.put(IMG_Abonent, ImageDescriptor.createFromURL(getClass().getResource("/icons/abonent.png")));
+		registry.put(IMG_Add, ImageDescriptor.createFromURL(getClass().getResource("/icons/add.png")));
+		registry.put(IMG_Edit, ImageDescriptor.createFromURL(getClass().getResource("/icons/edit.png")));
+		registry.put(IMG_Remove, ImageDescriptor.createFromURL(getClass().getResource("/icons/remove.png")));
 	}
 
 	private static final String IMG_BO_Online = "img_BO_online";
@@ -171,6 +176,46 @@ public class DImages {
 	}
 	public ImageDescriptor des_Back() {
 		return registry.getDescriptor(IMG_Back);
+	}
+
+	private static final String IMG_Abonents = "img_Abonents";
+	public Image img_Abonents() {
+		return registry.get(IMG_Abonents);
+	}
+	public ImageDescriptor des_Clients() {
+		return registry.getDescriptor(IMG_Abonents);
+	}
+
+	private static final String IMG_Abonent = "img_Abonent";
+	public Image img_Abonent() {
+		return registry.get(IMG_Abonent);
+	}
+	public ImageDescriptor des_Abonent() {
+		return registry.getDescriptor(IMG_Abonent);
+	}
+
+	private static final String IMG_Add = "img_Add";
+	public Image img_Add() {
+		return registry.get(IMG_Add);
+	}
+	public ImageDescriptor des_Add() {
+		return registry.getDescriptor(IMG_Add);
+	}
+
+	private static final String IMG_Edit = "img_Edit";
+	public Image img_Edit() {
+		return registry.get(IMG_Edit);
+	}
+	public ImageDescriptor des_Edit() {
+		return registry.getDescriptor(IMG_Edit);
+	}
+
+	private static final String IMG_Remove = "img_Remove";
+	public Image img_Remove() {
+		return registry.get(IMG_Remove);
+	}
+	public ImageDescriptor des_Remove() {
+		return registry.getDescriptor(IMG_Remove);
 	}
 
 	private static DImages instance;

@@ -1,11 +1,11 @@
-package ru.mpk.client.service.fiasaddress;
+package ru.mpk.client.service.mpkaddress;
 
 import lombok.Data;
 
 @Data
-public class FiasAddressDto {
+public class MpkAddressDto {
+    private String uid;
     private String fullName;
     private String fiasUid;
-    private String mpkUid;
     private String zip;
 }

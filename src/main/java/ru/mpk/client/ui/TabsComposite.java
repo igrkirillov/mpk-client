@@ -14,7 +14,6 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -33,6 +32,7 @@ public class TabsComposite extends Composite {
 
     private static final String HELP_TITLE = "Помощь";
     private static final String ADDRESS_TITLE = "Адреса";
+    private static final String CLIENTS_TITLE = "Абоненты";
 
     public TabsComposite(Composite parent) {
         super(parent, SWT.NONE);
@@ -56,6 +56,16 @@ public class TabsComposite extends Composite {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 openAddressTab();
+            }
+        });
+
+        ToolItem itemClients = new ToolItem(toolBar, SWT.PUSH);
+        itemClients.setText("Абоненты");
+        itemClients.setImage(DImages.instance().img_Abonents());
+        itemClients.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                openAbonentsTab();
             }
         });
 
@@ -93,6 +103,19 @@ public class TabsComposite extends Composite {
         GridDataFactory.fillDefaults().grab(true, true).applyTo(addressesPanel);
         ti.setControl(panel);
         tf.setSelection(ti);
-//        addressesPanel.setFocusToText();
+        addressesPanel.setFocusToLookup();
+    }
+
+    public void openAbonentsTab() {
+        CTabItem ti = new CTabItem(tf, SWT.CLOSE);
+        ti.setText(CLIENTS_TITLE);
+        ti.setImage(DImages.instance().img_Abonents());
+        Composite panel = new Composite(tf, SWT.NULL);
+        GridLayoutFactory.swtDefaults().numColumns(1).applyTo(panel);
+        AbonentsPanel clientsPanel = beanFactory.getBean(AbonentsPanel.class, panel, beanFactory);
+        GridDataFactory.fillDefaults().grab(true, true).applyTo(clientsPanel);
+        ti.setControl(panel);
+        tf.setSelection(ti);
+        clientsPanel.setFocusToTable();
     }
 }
