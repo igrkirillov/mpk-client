@@ -83,6 +83,7 @@ public class AbonentDetailsPanel extends Composite {
         AbonentCreationParameters parameters = new AbonentCreationParameters();
         parameters.setFullName(fullName.getText());
         AbonentDto dto = abonentClient.create(parameters);
+        NebulaUtils.messageInfo(getParent().getShell(), "Абонент сохранён в базу!");
         show(dto);
         parent.refreshOnTablePanel(dto);
     }
