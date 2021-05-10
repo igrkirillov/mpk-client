@@ -190,7 +190,7 @@ public class MainWindow extends ApplicationWindow {
                 miShow.setImage(image);
                 getShell().setImage(image);
             } else {
-                statusLineManager.setMessage(DImages.instance().img_RedCircle(), "BO Offline");
+                statusLineManager.setMessage(DImages.instance().img_RedCircle(), "MPK Server Offline");
                 Image image = DImages.instance().img_BO_OfflineImage();
                 trayItem.setImage(image);
                 miShow.setImage(image);
