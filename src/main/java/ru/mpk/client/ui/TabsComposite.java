@@ -85,7 +85,7 @@ public class TabsComposite extends Composite {
         GridLayoutFactory.swtDefaults().numColumns(1).applyTo(panel);
         Text text = new Text(panel, SWT.READ_ONLY | SWT.SINGLE);
         text.setBackground(tf.getBackground());
-        text.setText("Чтобы открыть новую вкладку, нажмите на одну из кнопок в верхней панели");
+        text.setText("Чтобы открыть новую вкладку, нажмите на одну из кнопок на верхней панели");
         GridDataFactory.swtDefaults()
                 .grab(true, true)
                 .align(SWT.CENTER, SWT.CENTER).applyTo(text);
