@@ -25,7 +25,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 import ru.mpk.client.DImages;
 import ru.mpk.client.service.ServerAddress;
-import ru.mpk.client.ui.ParametersTable;
 
 import java.net.URL;
 import java.net.URLConnection;
